@@ -1,0 +1,108 @@
+@font-face {
+    font-family: DecimaBold; /* Гарнитура шрифта */
+    src: url(../fonts/DecimaNovaPro/DecimaNovaPro-Bold.otf); /* Путь к файлу со шрифтом */
+}
+@font-face {
+    font-family: Decima; /* Гарнитура шрифта */
+    src: url(../fonts/DecimaNovaPro/DecimaNovaProLt.otf); /* Путь к файлу со шрифтом */
+}
+                                        
+a:hover{
+    color:white;
+}
+
+#menu{
+    color:black;
+    font-family: DecimaBold;
+    font-size: 25px;
+}
+
+#active-menu {
+    color: #f2a557;
+    background-color:black;
+    font-size: 25px;
+    font-family: DecimaBold;
+}
+
+#menu:hover{
+    color: #f2a557;
+    background-color:black;
+}
+
+.headerText1{
+    color:white;
+    font-family: DecimaBold;
+    
+}
+
+.headerText2{
+    font-family: DecimaBold;
+}
+
+.inputForm{
+    font-weight:bold;
+    height:60px;
+    font-size:20px;
+    opacity: 0.9;
+}
+
+.textForm{
+    color:white;
+    font-size:20px;
+    font-family: DecimaBold;
+}
+
+.exText{
+    color:black;
+    font-size:20px;
+    margin-top:10px;
+    width:80%;
+    font-family: Decima;
+}
+
+.exBorder1{
+    border-right:solid 1px black;
+}
+
+.exBorder2{
+    border-bottom:solid 1px black;
+}
+
+.blackLine{
+    border-bottom: 1px solid black;
+    width:30%;
+}
+
+#buttonForm{
+    width:100%;height:60px;
+    font-weight:bold;
+    font-size:20px;
+    color:white;
+    background-color:rgba(0,0,0,0);
+    border: 4px solid white;
+    font-family: DecimaBold;
+}
+
+#buttonForm:hover{
+    background-color: rgb(255, 255, 255);
+    color:black;
+}
+
+#welcomeText{
+    color:white;
+    width:100%;
+    font-size:20px;
+    font-family: Decima;
+}
+
+#header{
+    min-height:500px;
+    background-image: url(../images/bg/topBG.jpg);
+    background-size:cover;
+    background-position:center;
+}
+
+#header2{
+    min-height:500px;
+    background-color: rgba(0,0,0,.4);
+}
