@@ -3,6 +3,15 @@ session_start();
 //подключение конфигов
 include("../include/stack.php");
 $con = dataBase();
+//Подключение разных языков!!!
+if(!isset($_SESSION['lang']) and $_SESSION['lang'] == NULL){
+    $_SESSION['lang'] = "ru";
+}
+if(isset($_POST['lang'])){
+    $_SESSION['lang'] = $_POST['lang'];
+}
+$lang = getLang($_SESSION['lang'],$con);
+//Конец подключения разных языков!!!
 if(isset($_POST['register']) and isset($_POST['login']) and isset($_POST['email']) and isset($_POST['password']) and isset($_POST['repassword'])){
     $login = $_POST['login'];
     $email = $_POST['email'];
@@ -52,22 +61,37 @@ if(isset($_POST['register']) and isset($_POST['login']) and isset($_POST['email'
 	h1 {
     font-family: DecimaBold, 'Comic Sans MS', cursive;
     }
+	h2 {
+		text-align:center;
+		font-family:DecimaBold;
+		font-size:30pt;
+	}
+	@media screen and (min-width:800px) {
+		h1 { font-size: 60pt; }
+	}
+	@media screen and (min-width:480px) and (max-width:799px) {
+		/* Target landscape smartphones, portrait tablets, narrow desktops */
+		h1 { font-size: 48pt; }
+	}
+	@media screen and (max-width:479px) {
+		/* Target portrait smartphones */
+		h1 { font-size: 24pt; }
+	}
 	</style>
-  
 </head>
   
   <body>
   <?php echo menu("about");?>
 	<div class='container-fluid'>
-		<div class='col-lg-12 col-md-12' style='background-image: url(http://chat.self.ru/images/help/bg.jpg); background-size:cover; background-position:center;'>
+		<div class='col-lg-12 col-md-12' style='background-image: url(http://chat.self.ru/images/about/about.jpg); background-size:cover; background-position:center;'>
 			<div class='col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3'>
-				<h1 style="text-align:center; padding: 33% 0% 33% 0%; font-style: italic; font-stretch: expanded; color: #ffffff; font-size:60pt; font-family:DecimaBold;">Немного о нашем детище=)</h1>
+				<h1 style="text-align:center; padding: 33% 0% 33% 0%; font-style: italic; font-stretch: expanded; color: #ffffff; font-family:DecimaBold;"><?echo $lang['aboutUsTittle'];?>=)</h1>
 			</div>
 		</div>
 	</div>
 	<div class='container-fluid'>
 		<div class='row'>
-			<h2 style='text-align:center; font-family:DecimaBold; font-size:30pt;'>Что такое QuickTalks?</h2>
+			<h2>Что такое QuickTalks?</h2>
 		</div>
 		<div class='row'>
 			<div class='col-lg-4 col-md-4 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-3'>
@@ -75,15 +99,16 @@ if(isset($_POST['register']) and isset($_POST['login']) and isset($_POST['email'
 			</div>
 			<div class='col-lg-5 col-md-5 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-3'>
 			<br><br><br><br>
-				<p style='text-align:center; font-family:Decima; font-size:16pt;'>
-					<span style='color:red; font-size: 200%; position: relative; top: 5px;'>Q</span>uickTalks - простой web-чат, написанный группой из 4-х студентов, для Вас, друзья. Общайтесь, делитесь новостями, но не переходите границы цензуры :Р.  
+				<p style='text-align:center; font-family:Decima; font-size:24pt;'>
+					<span style='color:red; font-size: 200%; position: relative; top: 5px;'>Q</span>uickTalks - простой web-чат, написанный группой из 4-х студентов, для Вас, друзья. Общайтесь, делитесь новостями и радостными событиями вашей жизни :Р.  
 				</p>
+			</div>
 			</div>
 		</div>
 	</div>
 	<div class='container-fluid'>
 		<div class='row'>
-			<h2 style='text-align:center; font-family:DecimaBold; font-size:30pt;'>Наша команда</h2>
+			<h2>Наша команда</h2>
 		</div>
 		<div class='row'>
 			<div class='col-lg-4 col-md-4 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-3'>
@@ -92,21 +117,21 @@ if(isset($_POST['register']) and isset($_POST['login']) and isset($_POST['email'
 			<div class='col-lg-5 col-md-5 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-3'>
 				<div id='a_k' style='text-align:center; font-family:Decima; font-size:24pt;'>Артем Квач
 					<p style='text-align:center; font-family:Decima; font-size:18pt;'>IT директор</p>
-					<p style='font-size:14pt;'>Позитив всегда с ним! Весельчак и крутой программист. Идея создания чата принадлежит именно этому креативному парню.</p>
+					<p style='font-size:16pt;'>Позитив всегда с ним! Весельчак и крутой программист. Идея создания чата принадлежит именно этому креативному парню.</p>
 				</div>
 				<div id='d_k' style='text-align:center; font-family:Decima; font-size:24pt;'>Дарья Каратаева
 					<p style='text-align:center; font-family:Decima; font-size:18pt;'>Бизнес директор</p>
-					<p style='font-size:14pt;'>Наш мозг. Человек, который делает идеально все, за что не возьмется. Дарья очень творческий человек и потрясающий художник! Правила нашего чата написаны именно ею, не советуем пренебрегать ;)</p>
+					<p style='font-size:16pt;'>Наш мозг. Человек, который делает идеально все, за что не возьмется. Дарья очень творческий человек и потрясающий художник! Правила нашего чата написаны именно ею, не советуем пренебрегать ;)</p>
 				</div>
 				<div id='g_b' style='text-align:center; font-family:Decima; font-size:24pt;'>
 					Георгий Большаков
 					<p style='text-align:center; font-family:Decima; font-size:18pt;'>ART директор</p>
-					<p style='font-size:14pt;'>Наш главный верстальщик (теперь вы знаете кого сажать на кол). Просто мультисторонний человек, чьи увлечения начинаются с простой игры на гитаре и заканчиваются всевозможными проетами с использованием семейчтва Adobe.</p>
+					<p style='font-size:16pt;'>Наш главный верстальщик (теперь вы знаете кого сажать на кол). Просто мультисторонний человек, чьи увлечения начинаются с простой игры на гитаре и заканчиваются всевозможными проектами с использованием семейства Adobe.</p>
 				</div>
 				<div id='m_a' style='text-align:center; font-family:Decima; font-size:24pt;'>
 					Мариам Аветян
 					<p style='text-align:center; font-family:Decima; font-size:18pt;'>Технический директор</p>
-					<p style='font-size:14pt;'>Добрый и отзывчивый, всегда готовый помочь и просто хороший человек. На ее совести вункционирование нашего сайта (готовьте второй кол).</p>
+					<p style='font-size:16pt;'>Добрый и отзывчивый, всегда готовый помочь и просто хороший человек. На ее совести функционирование нашего сайта (готовьте второй кол).</p>
 				</div>
 			</div>
 			</div>

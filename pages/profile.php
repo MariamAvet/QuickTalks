@@ -39,17 +39,38 @@ $userInfo = userInfo($id,$con);
   </head>
   <body >
     <center><h1 >Добро пожаловать на Cake Group</h1></center>
-    <div class='container'>
+    <div class='container-fluid'>
 	<div class='row'>
-	    <div class='col-lg-12 col-md-12'>
-		Ваш логин: <?php echo $userInfo['login']?><br>
-		Ваш email: <?php echo $userInfo['email']?><br>
-		Дата регистрации: <?php echo $userInfo['regDate']?><br>
-		<form method='post'>
-                    <button style='width:100%;' type="submit" class="btn btn-danger" name='exit'>Выйти</button>
-                </form>
-		
-	    </div>
+		<div class='col-lg-12 col-md-12' style='background-image: url(http://chat.self.ru/images/profile_def.jpg); background-size:cover; background-position:center;'>
+			<div class='col-lg-5 col-md-5 col-lg-offset-1 col-md-offset-1' style='font-size:24px;  background-color: rgba(255, 227, 209, 0.5); padding: 10% 0% 10% 0%;'>
+				<div class='row'>
+					<div class='col-lg-5 col-md-5'>
+						Ваш логин: <?php echo $userInfo['login']?><br>
+						Ваш email: <?php echo $userInfo['email']?><br>
+						Дата регистрации: <?php echo $userInfo['regDate']?><br>
+					</div>
+					<div class='col-lg-5 col-md-5 col-lg-offset-1 col-md-offset-1'>
+						<img src='http://chat.self.ru/images/person.jpg' style='width:150px'>
+					</div>
+				</div>
+			</div>
+			<div class='col-lg-5 col-md-5 col-lg-offset-1 col-md-offset-1' style='font-size:24px; background-color: rgba(255, 227, 209, 0.5); padding: 10% 0% 10% 0%;'>
+				<p> Здесь должно что-то быть</p>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1' style='text-align: center;'>
+			<h1> Далее менюшка, чатики и еще что-то</h1><br>
+			<h1> Надо бы уже придумать =(</h1>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-lg-12 col-md-12'>
+			<form method='post'>
+				<button style='width:100%;' type="submit" class="btn btn-danger" name='exit'>Выйти</button>
+			</form>
+		</div>
 	</div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

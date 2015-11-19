@@ -28,13 +28,18 @@ function menu($active){
     		    <span class="icon-bar"></span>
     		    <span class="icon-bar"></span>
     		</button>
-    		<a class="navbar-brand" href="#" style="padding:0px 0px 0px 15px;"><img src="http://chat.self.ru/images/logo.png" width="50px" height="50px"></a>
+    		<a class="navbar-brand" href="http://'.$_SERVER['SERVER_NAME'].'" style="padding:0px 0px 0px 15px;"><img src="http://chat.self.ru/images/logo.png" width="50px" height="50px"></a>
 	    </div>
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     		<ul class="nav navbar-nav">
     		</ul>
     		<ul class="nav navbar-nav navbar-right">
+    		    <li><a><form method="post">
+    			<input type="image" src="../images/flags/24/Russia.png" value="ru" name="lang">
+    			<input type="image" src="../images/flags/24/Germany.png" value="de" name="lang">
+    			<input type="image" src="../images/flags/24/United-States.png" value="en" name="lang">
+    		    </form></a></li>
     		    <li><a href="/pages/about.php" '.$about.'>О нас</a></li>
     		    <li><a href="#" '.$document.'>Документы</a></li>
     		    <li><a href="/pages/help.php" '.$help.'>Помощь</a></li>
@@ -61,6 +66,16 @@ function dataBase(){
 //Функция шифрования данных
 function getCript($str){
     return md5("QuickMessage".md5("MARIAM".$str."GEORGIY").md5("DARIA".$str."ARTYOM"));
+}
+
+//Получение массива языка
+function getLang($language,$con){
+    $query = mysqli_query($con,"SELECT * FROM Lang");
+    $lang = array();
+    while($res = mysqli_fetch_assoc($query)){
+	$lang[$res['variable']] = $res[$language];
+    }
+    return $lang;
 }
 
 //Запрос данных из базы о пользователе
