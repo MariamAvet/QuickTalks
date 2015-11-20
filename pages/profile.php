@@ -45,7 +45,7 @@ $userInfo = userInfo($id,$con);
 			<div class='col-lg-5 col-md-5 col-lg-offset-1 col-md-offset-1' style='font-size:24px;  background-color: rgba(255, 227, 209, 0.5); padding: 10% 0% 10% 0%;'>
 				<div class='row'>
 					<div class='col-lg-5 col-md-5'>
-						Ваш логин: <?php echo $userInfo['login']?><br>
+						Ваш логин: <?php echo $userInfo['login']?> Не забудьте, плииииз<br>
 						Ваш email: <?php echo $userInfo['email']?><br>
 						Дата регистрации: <?php echo $userInfo['regDate']?><br>
 					</div>
